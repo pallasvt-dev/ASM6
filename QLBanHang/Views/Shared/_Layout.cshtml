@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - QLBanHang</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">QLBanHang</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Home" asp-action="Index">Trang chủ</a>
+                    </li>
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                                Quản lý Admin
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Product" asp-action="Index">Sản phẩm</a></li>
+                                <li><a class="dropdown-item" asp-area="Admin" asp-controller="Category" asp-action="Index">Chủ đề</a></li>
+                            </ul>
+                        </li>
+                    }
+                </ul>
+                <partial name="_LoginPartial" />
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,44 @@
+@model QLBanHang.Models.Category
+@{
+    ViewData["Title"] = "Chi tiết Chủ đề";
+}
+
+<h2>Chi tiết chủ đề</h2>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+        <dt class="col-sm-2">Tên</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Mô tả</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Số sản phẩm</dt>
+        <dd class="col-sm-10">@(Model.Products?.Count ?? 0)</dd>
+    </dl>
+</div>
+
+@if (Model.Products != null && Model.Products.Any())
+{
+    <h4>Các sản phẩm thuộc chủ đề này:</h4>
+    <table class="table table-sm table-bordered">
+        <thead>
+            <tr>
+                <th>Tên</th>
+                <th>Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var p in Model.Products)
+            {
+                <tr>
+                    <td>@p.Name</td>
+                    <td>@p.Price.ToString("N0") VNĐ</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Sửa</a>
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

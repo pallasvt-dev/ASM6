@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Chi tiết sản phẩm";
+}
+
+<div class="card">
+    @if (!string.IsNullOrEmpty(Model.Image))
+    {
+        <img src="@Model.Image" class="card-img-top" alt="@Model.Name"
+             style="max-height:350px;object-fit:contain;" />
+    }
+    <div class="card-body">
+        <h3 class="card-title">@Model.Name</h3>
+        <hr />
+        <p class="card-text">@Model.Description</p>
+        <h4 class="text-danger">@Model.Price.ToString("N0") VNĐ</h4>
+        <p><strong>Danh mục:</strong> @(Model.Category?.Name ?? "N/A")</p>
+        <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </div>
+</div>

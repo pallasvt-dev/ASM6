@@ -1,0 +1,47 @@
+@page
+@model LoginModel
+@{
+    ViewData["Title"] = "Dang nhap";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<div class="row">
+    <div class="col-md-6">
+        <form id="account" method="post" asp-route-returnUrl="@Model.ReturnUrl">
+            <h4>Su dung tai khoan de dang nhap.</h4>
+            <hr />
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="mb-3">
+                <label asp-for="Input.UserName"></label>
+                <input asp-for="Input.UserName" class="form-control" />
+                <span asp-validation-for="Input.UserName" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Input.Password"></label>
+                <input asp-for="Input.Password" type="password" class="form-control" />
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3 form-check">
+                <input asp-for="Input.RememberMe" class="form-check-input" />
+                <label asp-for="Input.RememberMe" class="form-check-label">Ghi nho dang nhap</label>
+            </div>
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Dang nhap</button>
+            </div>
+
+            <div class="mb-3">
+                <p>Chua co tai khoan? <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Dang ky ngay</a></p>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

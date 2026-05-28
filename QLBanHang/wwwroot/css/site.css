@@ -1,0 +1,54 @@
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+footer {
+    margin-top: auto;
+}
+
+.navbar-brand {
+    font-weight: 600;
+}
+
+.card {
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,.12);
+}
+
+.table-hover tbody tr:hover {
+    background-color: rgba(13,110,253,.05);
+}
+
+.btn {
+    border-radius: .25rem;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #86b7fe;
+    box-shadow: 0 0 0 .25rem rgba(13,110,253,.25);
+}
+
+.dropdown-item:active {
+    background-color: #0d6efd;
+}
+
+.validation-summary-errors ul {
+    padding-left: 1.25rem;
+}
+
+.field-validation-error {
+    font-size: .875em;
+    color: #dc3545;
+}
+
+input.input-validation-error,
+select.input-validation-error,
+textarea.input-validation-error {
+    border-color: #dc3545;
+}

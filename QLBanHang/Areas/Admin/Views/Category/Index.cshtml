@@ -1,0 +1,38 @@
+@model IEnumerable<QLBanHang.Models.Category>
+@{
+    ViewData["Title"] = "Quản lý Chủ đề";
+}
+
+<h2>Quản lý Chủ đề</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Thêm chủ đề mới</a>
+</p>
+
+<table class="table table-bordered table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Tên chủ đề</th>
+            <th>Mô tả</th>
+            <th>Số sản phẩm</th>
+            <th>Hành động</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Description</td>
+                <td>@(item.Products?.Count ?? 0)</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-warning">Sửa</a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-info">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

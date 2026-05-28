@@ -1,0 +1,41 @@
+@model QLBanHang.Models.Product
+@{
+    ViewData["Title"] = "Sửa Sản phẩm";
+}
+
+<h2>Sửa sản phẩm</h2>
+
+<form asp-action="Edit">
+    <input type="hidden" asp-for="Id" />
+    <div class="row">
+        <div class="col-md-6">
+            <div class="mb-3">
+                <label class="form-label">Tên sản phẩm</label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Giá (VNĐ)</label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Chủ đề</label>
+                <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                    <option value="">-- Chọn chủ đề --</option>
+                </select>
+                <span asp-validation-for="CategoryId" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Hình ảnh (URL)</label>
+                <input asp-for="Image" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Mô tả</label>
+                <textarea asp-for="Description" class="form-control" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Lưu</button>
+            <a asp-action="Index" class="btn btn-secondary">Quay lại</a>
+        </div>
+    </div>
+</form>

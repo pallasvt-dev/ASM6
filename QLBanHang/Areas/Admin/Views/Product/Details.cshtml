@@ -1,0 +1,31 @@
+@model QLBanHang.Models.Product
+@{
+    ViewData["Title"] = "Chi tiết Sản phẩm";
+}
+
+<h2>Chi tiết sản phẩm</h2>
+
+<div>
+    <h4>Sản phẩm</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">ID</dt>
+        <dd class="col-sm-10">@Model.Id</dd>
+        <dt class="col-sm-2">Tên</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Giá</dt>
+        <dd class="col-sm-10">@Model.Price.ToString("N0") VNĐ</dd>
+        <dt class="col-sm-2">Mô tả</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Chủ đề</dt>
+        <dd class="col-sm-10">@Model.Category?.Name</dd>
+        @if (!string.IsNullOrEmpty(Model.Image))
+        {
+            <dt class="col-sm-2">Hình ảnh</dt>
+            <dd class="col-sm-10"><img src="@Model.Image" style="max-height:200px;" /></dd>
+        }
+    </dl>
+</div>
+
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Sửa</a>
+<a asp-action="Index" class="btn btn-secondary">Quay lại</a>

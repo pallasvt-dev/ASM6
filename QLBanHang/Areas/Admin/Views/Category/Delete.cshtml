@@ -1,0 +1,39 @@
+@model QLBanHang.Models.Category
+@{
+    ViewData["Title"] = "Xóa Chủ đề";
+}
+
+<h2 class="text-danger">Xác nhận xóa chủ đề</h2>
+
+<div class="alert alert-danger">
+    <h4>Bạn có chắc chắn muốn xóa chủ đề này?</h4>
+    <p>Xóa chủ đề sẽ đồng thời <strong>xóa tất cả sản phẩm</strong> thuộc chủ đề này.</p>
+</div>
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">Tên</dt>
+        <dd class="col-sm-10">@Model.Name</dd>
+        <dt class="col-sm-2">Mô tả</dt>
+        <dd class="col-sm-10">@Model.Description</dd>
+        <dt class="col-sm-2">Số sản phẩm sẽ bị xóa</dt>
+        <dd class="col-sm-10 text-danger fw-bold">@(Model.Products?.Count ?? 0) sản phẩm</dd>
+    </dl>
+
+    @if (Model.Products != null && Model.Products.Any())
+    {
+        <h5>Các sản phẩm sẽ bị xóa:</h5>
+        <ul>
+            @foreach (var p in Model.Products)
+            {
+                <li>@p.Name - @p.Price.ToString("N0") VNĐ</li>
+            }
+        </ul>
+    }
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <button type="submit" class="btn btn-danger">Xóa tất cả</button>
+        <a asp-action="Index" class="btn btn-secondary">Hủy</a>
+    </form>
+</div>
